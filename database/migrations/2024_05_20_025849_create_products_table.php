@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('size');
-            $table->enum('type', ['Pizza', 'Entrada','Burrito','Sandwich','Arepa','Papa']);
+            $table->enum('type', ['Pizza', 'Entrada', 'Burrito', 'Sandwich', 'Arepa', 'Papa']);
+            $table->string('description');
             $table->integer('price');
             $table->timestamps();
         });
