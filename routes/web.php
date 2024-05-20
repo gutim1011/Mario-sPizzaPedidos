@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+
+Route::get('/order', 'App\Http\Controllers\OrderController@index')->name('order.index');
+Route::get('/order/data', 'App\Http\Controllers\OrderController@data')->name('order.data');
+Route::get('/order/menu', 'App\Http\Controllers\OrderController@menu')->name('order.menu');
