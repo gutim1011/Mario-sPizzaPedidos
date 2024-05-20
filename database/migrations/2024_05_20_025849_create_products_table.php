@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('sabor');
+            $table->string('name');
             $table->string('size');
-            $table->enum('type', ['Pizza', 'Entrada','Burrito','Sandwich','Arepa','Papa']);
+            $table->enum('type', ['Pizza', 'Entrada', 'Burrito', 'Sandwich', 'Arepa', 'Papa']);
+            $table->string('description');
             $table->integer('price');
             $table->timestamps();
         });

@@ -23,3 +23,10 @@ Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.ind
 Route::get('/cart/delete', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 Route::post('/cart/add', 'App\Http\Controllers\CartController@add')->name('cart.add');
 Route::get('/cart/purchase', 'App\Http\Controllers\CartController@purchase')->name('cart.purchase');
+
+Route::get('/admin', 'App\Http\Controllers\AdminController@index')->name('admin.index');
+Route::get('/admin/create', 'App\Http\Controllers\AdminController@create')->name('admin.create');
+Route::post('/admin/store', 'App\Http\Controllers\AdminController@store')->name('admin.store');
+Route::get('/admin/edit/{id}', 'App\Http\Controllers\AdminController@edit')->name('admin.edit');
+Route::post('/admin/update/{id}', 'App\Http\Controllers\AdminController@update')->name('admin.update');
+Route::get('/admin/delete/{id}', 'App\Http\Controllers\AdminController@delete')->name('admin.delete');

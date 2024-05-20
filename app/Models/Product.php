@@ -2,14 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Collection;
 
 class Product extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',      // Añadido para permitir la asignación masiva
+        'description',
+        'size',
+        'type',
+        'price',
+    ];
 
     public function orderItems(): HasMany
     {
