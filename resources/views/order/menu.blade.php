@@ -21,5 +21,6 @@
             @endforeach
         </ul>
     @endforeach
+    <a href="{{ route('order.menuPizza') }}" class="btn btn-primary">Siguiente</a>
 </div>
 @endsection

@@ -49,4 +49,14 @@ class OrderController extends Controller
 
         return view('order.menu')->with('viewData', $viewData);
     }
+
+    public function menuPizza()
+    {
+        $viewData = [];
+        $viewData['clasicFlavors']= ['hawaiana','Ranchera Salame','Jamon y Queso','Napolitana'];
+        $viewData['specialFlavors'] = ['Peperoni','Maiz tocineta', 'Ranchera mix','Paisa','Trs estaciones','Rustica','Camila'];
+        $viewData['estofadaFlavors'] = ['Carnes','Champiñones','Delifood'];
+ 
+        return view('order.pizza')->with('viewData', $viewData);
+    }
 }
