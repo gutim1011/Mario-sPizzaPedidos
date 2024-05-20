@@ -1,51 +1,25 @@
 @extends('layouts.app')
+
 @section('content')
-
-<form action="/submit_order" method="POST">
-    @csrf
-
-    <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name" required><br><br>
-
-    <label for="phone">Teléfono:</label>
-    <input type="tel" id="phone" name="phone" required><br><br>
-
-    <label for="address">Dirección:</label>
-    <input type="text" id="address" name="address" required><br><br>
-
-    <label for="food">Tipo de comida:</label>
-    <select id="food" name="food" required>
-        <optgroup label="Entradas">
-            @foreach($appetizers as $appetizer)
-                <option value="{{ $appetizer->id }}">{{ $appetizer->name }}</option>
+<div class="container">
+    <h1>Menú</h1>
+    @foreach($viewData as $category => $products)
+        <h2>{{ ucfirst($category) }}</h2>
+        <ul class="list-group mb-3">
+            @foreach($products as $product)
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ $product->name }} - {{ $product->size }} ({{ $product->price }} COP)
+                    <div class="d-flex align-items-center">
+                        <form action="{{ route('cart.add') }}" method="POST" class="form-inline">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="number" name="quantity" min="1" value="1" class="form-control form-control-sm mr-2" style="width: 60px;">
+                            <button type="submit" class="btn btn-primary btn-sm">Añadir al carrito</button>
+                        </form>
+                    </div>
+                </li>
             @endforeach
-        </optgroup>
-        <optgroup label="Pizza">
-            @foreach($pizzas as $pizza)
-                <option value="{{ $pizza->id }}">{{ $pizza->name }}</option>
-            @endforeach
-        </optgroup>
-        <optgroup label="Arepas">
-            @foreach($arepas as $arepa)
-                <option value="{{ $arepa->id }}">{{ $arepa->name }}</option>
-            @endforeach
-        </optgroup>
-        <optgroup label="Otros">
-            @foreach($others as $other)
-                <option value="{{ $other->id }}">{{ $other->name }}</option>
-            @endforeach
-        </optgroup>
-    </select><br><br>
-
-    <label for="quantity">Cantidad:</label>
-    <input type="number" id="quantity" name="quantity" required><br><br>
-
-    <label for="specifications">Detalles:</label>
-    <textarea id="specifications" name="specifications"></textarea><br><br>
-
-    <input type="submit" value="Añadir a la orden">
-
-    <a href="/cart" class="btn btn-primary">Ir al carrito</a>
-</form>
-
+        </ul>
+    @endforeach
+</div>
 @endsection
