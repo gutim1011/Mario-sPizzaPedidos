@@ -11,6 +11,14 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',      // Añadido para permitir la asignación masiva
+        'description',
+        'size',
+        'type',
+        'price',
+    ];
+
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class);
